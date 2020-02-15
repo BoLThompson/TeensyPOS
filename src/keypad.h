@@ -14,17 +14,17 @@ namespace Keypad {
   #define b7 7
   #define b8 8
   #define b9 9
-  #define bs 10
-  #define bh 11
-  #define ba 12
-  #define bb 13
-  #define bc 14
-  #define bd 15
+  #define bAsterisk 10
+  #define bPound 11
+  #define bA 12
+  #define bB 13
+  #define bC 14
+  #define bD 15
 
   void init();
   void pollButtons();
   bool oneNewButtonPressed();
-  void getButton(void (*callback)(uint8_t));
+  bool getButton(void (*callback)(uint8_t));
 };
 
 #endif

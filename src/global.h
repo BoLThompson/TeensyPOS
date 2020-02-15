@@ -3,6 +3,8 @@
 
 #include <Arduino.h>
 
+#define LINE_HEIGHT 8
+
 enum EntryType {
   Sale,
   Refund
@@ -14,12 +16,11 @@ enum DocType {
 };
 
 namespace Entry {
-  extern uint8_t employee;
+  extern uint32_t employee;
   extern uint32_t cash;
-  extern uint32_t id;
+  extern uint32_t docId;
   extern EntryType entryType;
   extern DocType docType;
-  //FIXME time
 
   void init();
 };
