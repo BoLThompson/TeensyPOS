@@ -93,19 +93,26 @@ bool Keypad::oneNewButtonPressed() {
 }
 
 bool Keypad::getButton(void (*callback)(uint8_t)) {
-
-  pollButtons();
-
   if ( ( (buttonState^prevButtonState) & buttonState ) == 0 ) return false;  //test for freshly pressed buttons
   if ( ((buttonState-1) & buttonState) != 0 ) return false; //make sure multiple buttons are not pressed
 
   if (callback == NULL) return true;
 
-  uint8_t buttonIndex = 0;
-
-  while (keyNumbers[buttonIndex] != buttonState) buttonIndex++;
+  uint8_t buttonIndex = getButtonIndex();
 
   (callback)(buttonIndex);
 
   return true;
+}
+
+uint8_t Keypad::getButtonIndex() {
+  uint8_t buttonIndex = 0;
+
+  while (keyNumbers[buttonIndex] != buttonState) buttonIndex++;
+
+  return (buttonIndex);
+}
+
+uint16_t Keypad::getButtonState() {
+  return buttonState;
 }

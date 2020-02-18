@@ -25,6 +25,8 @@ namespace Keypad {
   void pollButtons();
   bool oneNewButtonPressed();
   bool getButton(void (*callback)(uint8_t));
+  uint8_t getButtonIndex();
+  uint16_t getButtonState();
 };
 
 #endif
